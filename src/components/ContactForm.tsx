@@ -10,16 +10,16 @@ const faturamentoOptions = [
 ];
 
 const ContactForm = () => {
-  const [form, setForm] = useState({ empresa: "", nicho: "", faturamento: "" });
+  const [form, setForm] = useState({ nome: "", email: "", whatsapp: "", empresa: "", nicho: "", faturamento: "" });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.empresa.trim() || !form.nicho.trim() || !form.faturamento) {
+    if (!form.nome.trim() || !form.email.trim() || !form.whatsapp.trim() || !form.empresa.trim() || !form.nicho.trim() || !form.faturamento) {
       toast.error("Preencha todos os campos.");
       return;
     }
     toast.success("Diagnóstico solicitado com sucesso!");
-    setForm({ empresa: "", nicho: "", faturamento: "" });
+    setForm({ nome: "", email: "", whatsapp: "", empresa: "", nicho: "", faturamento: "" });
   };
 
   return (
@@ -58,7 +58,48 @@ const ContactForm = () => {
             Preencha abaixo e nossa equipe entrará em contato.
           </p>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div>
+              <label className="text-foreground font-heading font-medium text-sm mb-2 block">
+                Nome <span className="text-primary">*</span>
+              </label>
+              <input
+                type="text"
+                value={form.nome}
+                onChange={(e) => setForm({ ...form, nome: e.target.value })}
+                placeholder="Seu nome completo"
+                className="w-full bg-foreground text-background rounded-lg px-4 py-3.5 font-body text-sm outline-none focus:ring-2 focus:ring-primary transition-shadow placeholder:text-muted-foreground/50"
+                maxLength={100}
+              />
+            </div>
+
+            <div>
+              <label className="text-foreground font-heading font-medium text-sm mb-2 block">
+                Email <span className="text-primary">*</span>
+              </label>
+              <input
+                type="email"
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                placeholder="seu@email.com"
+                className="w-full bg-foreground text-background rounded-lg px-4 py-3.5 font-body text-sm outline-none focus:ring-2 focus:ring-primary transition-shadow placeholder:text-muted-foreground/50"
+                maxLength={255}
+              />
+            </div>
+
+            <div>
+              <label className="text-foreground font-heading font-medium text-sm mb-2 block">
+                WhatsApp <span className="text-primary">*</span>
+              </label>
+              <input
+                type="tel"
+                value={form.whatsapp}
+                onChange={(e) => setForm({ ...form, whatsapp: e.target.value })}
+                placeholder="(00) 00000-0000"
+                className="w-full bg-foreground text-background rounded-lg px-4 py-3.5 font-body text-sm outline-none focus:ring-2 focus:ring-primary transition-shadow placeholder:text-muted-foreground/50"
+                maxLength={20}
+              />
+            </div>
             <div>
               <label className="text-foreground font-heading font-medium text-sm mb-2 block">
                 Nome da empresa <span className="text-primary">*</span>
