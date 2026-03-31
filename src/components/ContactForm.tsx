@@ -14,7 +14,7 @@ const ContactForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.empresa.trim() || !form.nicho.trim() || !form.faturamento) {
+    if (!form.nome.trim() || !form.email.trim() || !form.whatsapp.trim() || !form.empresa.trim() || !form.nicho.trim() || !form.faturamento) {
       toast.error("Preencha todos os campos.");
       return;
     }
