@@ -10,7 +10,7 @@ const faturamentoOptions = [
 ];
 
 const ContactForm = () => {
-  const [form, setForm] = useState({ empresa: "", nicho: "", faturamento: "" });
+  const [form, setForm] = useState({ nome: "", email: "", whatsapp: "", empresa: "", nicho: "", faturamento: "" });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
